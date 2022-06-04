@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Comments {% endblock %}</h1>
+
+    <div style="width: 50%; margin: auto">
+        <p>This demonstrates using a for loop and varying output based on loop index.</p>
+        <!-- Jinja for loop -->
+        {% for comment in comments %}
+            {% if loop.index % 2 == 0 %}
+                {% set bg_color = '#e6f9ff' %}
+            {% else %}
+                {% set bg_color = '#eee' %}
+            {% endif %}
+        <div style="padding: 10px; background-color: {{ bg_color }}; margin: 20px">
+            <p>#{{ loop.index }}</p>
+            <!-- pipe | and upper is a filter to make contents uppercase -->
+            <p style="font-size: 24px">{{ comment | upper }}</p>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
